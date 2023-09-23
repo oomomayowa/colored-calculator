@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <fieldset style="height: 340px;width: 90px;background-color:wheat;border-radius: 16px;">
+            <input type="text"  style="height: 35px;text-align: end;background-color: black;font-size: 20px; width: 205px; color: white;" id="input">
+            
+        <table border="4px" style="margin-bottom: 60px;margin-top: -70px;">
+            <br>
+        <tr>
+            <th ><button style="height: 50px;width: 45px;background-color: white;text-align: center; padding: 20px; " onclick="clearInput(`C`)">C</button></th>
+            <th ><button style="height: 50px;width: 45px;background-color: white;text-align: center; padding: 20px;" onclick="action(`+/,`)">+/,</button></th>
+            <th ><button style="height: 50px;width: 45px;background-color: white;text-align: center; padding: 20px;" onclick="action(`%`)">%</button></th>
+            <th ><button style="height: 50px;width: 45px; background-color: rgb(5, 5, 75);text-align:center; padding: 20px; font-size: 15px;color: white;" onclick="action(`/`)">/</button></th>
+             
+        </tr>
+        <br>  
+        <tr>
+            <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`7`)">7</button></td>
+            <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`8`)">8</button></td>
+            <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`9`)">9</button></td>
+            <td ><button style="height: 50px;width: 45px; background-color: rgb(5, 5, 75);text-align: center;font-size: 15px;color: white; padding: 20px;" onclick="action(`*`)">*</button></td>
+                </tr> 
+                <br>
+                <tr>
+                    <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`4`)">4</button></td>
+                    <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`5`)">5</button></td>
+                    <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`6`)">6</button></td>
+                    <td ><button style="height: 50px;width: 45px; background-color: rgb(7, 7, 89);text-align: center; padding: 20px;font-size: 15px;color: white;" onclick="action(`-`)">-</button></td>
+                        </tr> 
+                        <br>
+                        
+                        <tr>
+                            <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`1`)">1</button></td>
+                            <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`2`)">2</button></td>
+                            <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`3`)">3</button></td>
+                            <td ><button style="height: 50px;width: 40px;background-color: rgb(5, 5, 75);text-align: center; padding: 20px;font-size: 15px;color: white;" onclick="action(`+`)">+</button></td>
+                                </tr>
+                                <br>
+                                <tr>
+                                    <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`0`)">0</button></td>
+                                     <td ><button style="height: 50px;width: 45px;text-align: center; padding: 20px;" onclick="action(`,`)">,</button></td> 
+                                     <td ><button style="height: 50px;width: 40px;text-align: center; padding: 20px;" onclick="action(`.`)">.</button></td>
+                                     <td ><button style="height: 50px;width: 40px;background-color: rgb(5, 5, 75);text-align: center;font-size: 15px;color: white;padding: 20px;" onclick="calculate(`=`)">=</button></td>
+                                        </tr>
+
+        </table>
+        </fieldset>
+    
+
+
+
+        <script>
+
+const inputField = document.getElementById('input');
+const buttons = document.getElementsByClassName('button');
+
+
+function action(value) {
+  inputField.value += value;
+}
+
+function calculate() {
+  const expression = inputField.value;
+
+  const numbers = expression.split(/(\+|\-|\*|\/)/);
+
+  let result = parseFloat(numbers[0]);
+
+  for (let i = 1; i < numbers.length; i += 2) {
+    const operator = numbers[i];
+    const operand = parseFloat(numbers[i + 1]);
+
+    if (operator === '+') {
+      result += operand;
+    } else if (operator === '-') {
+        result -= operand;
+    } else if (operator === '*') {
+      result *= operand;
+    } else if (operator === '/') {
+      result /= operand;
+    }
+  }
+
+  inputField.value = result;
+}
+
+
+function clearInput() {
+  inputField.value = '';
+}
+
+        
+        
+        
+        </script>
+</body>
+</html>
